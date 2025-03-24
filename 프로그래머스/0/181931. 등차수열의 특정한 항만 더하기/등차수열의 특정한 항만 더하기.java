@@ -1,14 +1,7 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int solution(int a, int d, boolean[] included) {
-        int sum = 0;
-        int idx = 0;
-        
-        for(int i = a; idx < included.length; i += d) {
-            if(included[idx++]) {
-                sum += i;
-            }
-        }
-        
-        return sum;
+        return IntStream.range(0, included.length).map(idx -> included[idx] ? a + (d * idx) : 0).sum();
     }
 }
