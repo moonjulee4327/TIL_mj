@@ -1,20 +1,21 @@
 import java.util.*;
 
 class Solution {
-    public List<Integer> solution(int n) {
+    public int[] solution(int n) {
         List<Integer> answer = new ArrayList<>();
+        collatz(n, answer);
+        return answer.stream().mapToInt(i -> i).toArray();
+    }
+    
+    private void collatz(int n, List<Integer> answer) {
         answer.add(n);
         
-        while(n != 1) {
-            if(n % 2 == 0) {
-                n /= 2;
-            }else {
-                n = (3 * n) + 1;
-            }
-            answer.add(n);
+        if(n == 1) return;
+        
+        if(n % 2 == 0) {
+            collatz(n / 2, answer);
+        }else {
+            collatz(3 * n + 1, answer);
         }
-
-        return answer;
     }
-
 }
