@@ -3,10 +3,8 @@ class Solution {
         String answer = "";
         
         for(int i = 0; i < index_list.length; i++) {
-            answer += my_string.substring(index_list[i], index_list[i] + 1);
+            answer += my_string.charAt(index_list[i]);
         }
-        
-        System.out.println(answer);
         
         return answer;
     }
