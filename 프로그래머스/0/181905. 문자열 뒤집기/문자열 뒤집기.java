@@ -1,7 +1,13 @@
 class Solution {
     public String solution(String my_string, int s, int e) {
-        StringBuilder answer = new StringBuilder(my_string.substring(s, e + 1));
-        answer.reverse();
-        return my_string.substring(0, s) + answer + my_string.substring(e + 1);
+        char[] charArr = my_string.toCharArray();
+        
+        while(s < e) {
+            char temp = charArr[s];
+            charArr[s++] = charArr[e];
+            charArr[e--] = temp;
+        }
+        
+        return new String(charArr);
     }
 }
