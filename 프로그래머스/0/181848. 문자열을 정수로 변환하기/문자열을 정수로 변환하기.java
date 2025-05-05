@@ -3,7 +3,7 @@ class Solution {
         int answer = 0;
         try {
             answer = Integer.parseInt(n_str);
-        }catch (NumberFormatException e){
+        }catch (NumberFormatException e){// int 범위 예외 처리
             e.printStackTrace();
         }
         return answer;
