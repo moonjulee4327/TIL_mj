@@ -4,13 +4,11 @@ class Solution {
     }
     
     private int coupon(int chicken) {
-        int coupon = 0;
+        int coupon = chicken;
         int serviceChiken = 0;
-        while(chicken >= 10) {
-            coupon = chicken;
-            chicken = coupon / 10;
-            coupon += coupon % 10;
+        while(coupon >= 10) {
             serviceChiken += coupon / 10;
+            coupon = (coupon / 10) + coupon % 10;
         }
         return serviceChiken;
     }
