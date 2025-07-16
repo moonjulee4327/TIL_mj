@@ -1,0 +1,11 @@
+SELECT  SUM(b.SCORE) as 'SCORE',
+        a.EMP_NO,
+        a.EMP_NAME,
+        a.POSITION,
+        a.EMAIL
+FROM    HR_EMPLOYEES a
+INNER JOIN HR_GRADE b
+ON      a.EMP_NO = b.EMP_NO
+GROUP BY 2
+ORDER BY 1 DESC
+LIMIT 1;
