@@ -1,0 +1,14 @@
+SELECT  u.USER_ID,
+        u.NICKNAME,
+        CONCAT(u.CITY, ' ', u.STREET_ADDRESS1, ' ', u.STREET_ADDRESS2) AS '전체주소',
+        CONCAT(SUBSTR(u.TLNO, 1, 3), '-', SUBSTR(u.TLNO, 4, 4), '-', SUBSTR(u.TLNO, 8, 4)) AS '전화번호'
+FROM    
+    (
+        SELECT WRITER_ID
+        FROM USED_GOODS_BOARD
+        GROUP BY WRITER_ID
+        HAVING COUNT(WRITER_ID) >= 3
+    ) b
+INNER JOIN USED_GOODS_USER u
+ON      b.WRITER_ID	= u.USER_ID
+ORDER BY 1 DESC;
