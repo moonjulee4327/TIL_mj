@@ -4,12 +4,10 @@ SELECT  i.ID,
 FROM    FISH_INFO i
 JOIN    FISH_NAME_INFO n
 ON      i.FISH_TYPE = n.FISH_TYPE
-WHERE   i.LENGTH = (
-            SELECT  
-                CASE
-                    WHEN MAX(i2.LENGTH) > 10 THEN MAX(i2.LENGTH)
-                END
+WHERE   (i.FISH_TYPE, i.LENGTH) IN (
+            SELECT  i2.FISH_TYPE,
+                    MAX(i2.LENGTH)
             FROM    FISH_INFO i2
-            WHERE   i2.FISH_TYPE = i.FISH_TYPE
+            GROUP BY i2.FISH_TYPE
         )
 ORDER BY 1;
