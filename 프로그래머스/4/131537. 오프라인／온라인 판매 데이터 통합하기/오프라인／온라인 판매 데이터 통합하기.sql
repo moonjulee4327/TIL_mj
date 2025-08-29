@@ -1,0 +1,14 @@
+SELECT  DATE_FORMAT(ons.SALES_DATE, '%Y-%m-%d') AS 'SALES_DATE',
+        ons.PRODUCT_ID,
+        ons.USER_ID,
+        ons.SALES_AMOUNT
+FROM    ONLINE_SALE ons
+WHERE   ons.SALES_DATE >= '2022-03-01' AND ons.SALES_DATE < '2022-04-01'
+UNION ALL
+SELECT  DATE_FORMAT(offs.SALES_DATE, '%Y-%m-%d') AS 'SALES_DATE',
+        offs.PRODUCT_ID,
+        NULL AS 'USER_ID',
+        offs.SALES_AMOUNT
+FROM    OFFLINE_SALE offs
+WHERE   offs.SALES_DATE >= '2022-03-01' AND offs.SALES_DATE < '2022-04-01'
+ORDER BY 1, 2, 3;
