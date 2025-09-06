@@ -1,8 +1,5 @@
 class Solution {
     public String solution(String my_string) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(my_string);
-        sb.reverse();
-        return sb.toString();
+        return new StringBuilder(my_string).reverse().toString();
     }
 }
