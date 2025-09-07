@@ -1,12 +1,9 @@
 class Solution {
     public int solution(int n, int t) {
-        return doubleValue(n, t);
-    }
-    
-    private int doubleValue(int n, int t) {
-        if(t-- == 0) {
-            return n;
+        int answer = n;
+        for(int i = 0; i < t; i++) {
+            answer *= 2; 
         }
-        return doubleValue(n, t) * 2;
+        return answer;
     }
 }
