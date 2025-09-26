@@ -2,19 +2,12 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String my_string) {
-        int[] answer = {};
-        List<Integer> list = new ArrayList();
-        char[] arr = my_string.toCharArray();
-        for(char c : arr) {
-            if(c >= '0' && c <= '9') {
-                list.add((int) c - 48);
-            }
+        String[] arr = my_string.replaceAll("[a-zA-Z]", "").split("");
+        int[] answer = new int[arr.length];
+        for(int i = 0; i < arr.length; i++) {
+            answer[i] = Integer.parseInt(arr[i]);
         }
-        Collections.sort(list);
-        answer = new int[list.size()];
-        for(int i = 0; i < answer.length; i++) {
-            answer[i] = list.get(i);
-        }
+        Arrays.sort(answer);
         return answer;
     }
 }
