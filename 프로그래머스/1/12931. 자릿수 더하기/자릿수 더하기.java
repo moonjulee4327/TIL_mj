@@ -3,9 +3,9 @@ import java.util.*;
 public class Solution {
     public int solution(int n) {
         int answer = 0;
-        String[] nStrArr = String.valueOf(n).split("");
-        for(String nStr : nStrArr) {
-            answer += Integer.parseInt(nStr);
+        while(n > 0) {
+            answer += n % 10;
+            n = n / 10;
         }
         return answer;
     }
