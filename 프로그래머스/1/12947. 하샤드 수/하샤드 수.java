@@ -5,6 +5,6 @@ class Solution {
         for(String str : strArr) {
             sum += Integer.parseInt(str);
         }
-        return x % sum == 0 ? true : false;
+        return x % sum == 0;
     }
 }
