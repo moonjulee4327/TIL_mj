@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(int[] numbers) {
@@ -14,13 +15,6 @@ class Solution {
             }
         }
         
-        int[] answer = new int[set.size()];
-        Iterator<Integer> iter = set.iterator();
-        int i = 0;
-        while(iter.hasNext()) {
-            answer[i++] = iter.next();
-        }
-        
-        return answer;
+        return set.stream().mapToInt(Integer::intValue).toArray();
     }
 }
