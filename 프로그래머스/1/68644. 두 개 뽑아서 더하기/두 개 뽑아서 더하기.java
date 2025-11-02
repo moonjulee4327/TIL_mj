@@ -15,9 +15,10 @@ class Solution {
         }
         
         int[] answer = new int[set.size()];
+        Iterator<Integer> iter = set.iterator();
         int i = 0;
-        for(Integer s : set) {
-            answer[i++] = s;
+        while(iter.hasNext()) {
+            answer[i++] = iter.next();
         }
         
         return answer;
