@@ -6,12 +6,8 @@ class Solution {
         Set<Integer> set = new TreeSet<>();
         
         for(int i = 0; i < numbers.length; i++) {
-            for(int j = 0; j < numbers.length; j++) {
-                if(i == j) {
-                    continue;
-                }else {
-                    set.add(numbers[i] + numbers[j]);
-                }
+            for(int j = i + 1; j < numbers.length; j++) {
+                set.add(numbers[i] + numbers[j]);
             }
         }
         
