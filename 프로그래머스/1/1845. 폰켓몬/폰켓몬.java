@@ -2,9 +2,15 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] nums) {
-        Set<Integer> kinds = new HashSet<>();
-        for (int n : nums) kinds.add(n);
-        int limit = nums.length / 2;
-        return Math.min(kinds.size(), limit);
+        Set<Integer> set = new HashSet<>();
+        
+        for(int num : nums) {
+            set.add(num);
+        }
+
+        int length = nums.length / 2;
+        int size = set.size();
+        
+        return length > size ? size :length;
     }
 }
