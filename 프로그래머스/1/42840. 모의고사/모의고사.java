@@ -2,32 +2,58 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] answers) {
-        int[] p1 = {1, 2, 3, 4, 5};
-        int[] p2 = {2, 1, 2, 3, 2, 4, 2, 5};
-        int[] p3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-
-        int[] scores = new int[3];
-
-        for (int i = 0; i < answers.length; i++) {
-            if (answers[i] == p1[i % p1.length]) scores[0]++;
-            if (answers[i] == p2[i % p2.length]) scores[1]++;
-            if (answers[i] == p3[i % p3.length]) scores[2]++;
-        }
-
-        int maxScore = Math.max(scores[0], Math.max(scores[1], scores[2]));
-
-        List<Integer> resultList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            if (scores[i] == maxScore) {
-                resultList.add(i + 1);
+        int[] count = new int[3];
+        int[] h1 = new int[] {1, 2, 3, 4, 5};
+        int[] h2 = new int[] {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] h3 = new int[] {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        for(int i = 0; i < answers.length; i++) {
+            if(x > h1.length - 1) {
+                x = 0;
+            }
+            if(y > h2.length - 1) {
+                y = 0;
+            }
+            if(z > h3.length - 1) {
+                z = 0;
+            }
+            
+            if(answers[i] == h1[x++]) {
+                count[0]++;
+            } 
+            if(answers[i] == h2[y++]) {
+                count[1]++;
+            } 
+            if(answers[i] == h3[z++]) {
+                count[2]++;
             }
         }
-
-        int[] result = new int[resultList.size()];
-        for (int i = 0; i < resultList.size(); i++) {
-            result[i] = resultList.get(i);
+        
+        int max = 0;
+        for(int c : count) {
+            if(c > max) {
+                max = c;
+            }
         }
-
-        return result;
+        
+        int idx = 0;
+        for(int c : count) {
+            if(max == c) {
+                idx++;
+            }
+        }
+        
+        int[] answer = new int[idx];
+        int idx2 = 0;
+        for(int i = 0; i < count.length; i++) {
+            if(max == count[i]) {
+                answer[idx2++] = i + 1;
+            }
+        }
+        
+        return answer;
     }
 }
