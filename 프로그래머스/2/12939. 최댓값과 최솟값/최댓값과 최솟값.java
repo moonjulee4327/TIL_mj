@@ -1,21 +1,18 @@
 import java.util.*;
 
 class Solution {
+    private int min = Integer.MAX_VALUE;
+    private int max = Integer.MIN_VALUE;
+    
     public String solution(String s) {
         StringBuilder sb = new StringBuilder();
-        String[] sArr = s.split(" ");
-        int[] sIntArr = new int[sArr.length];
+        String[] split = s.split(" ");
         
-        for(int i = 0; i < sArr.length; i++) {
-            sIntArr[i] = Integer.parseInt(sArr[i]);
+        for(String str : split) {
+            max = Math.max(Integer.parseInt(str), max);
+            min = Math.min(Integer.parseInt(str), min);
         }
         
-        Arrays.sort(sIntArr);
-
-        sb.append(sIntArr[0]);
-        sb.append(" ");
-        sb.append(sIntArr[sIntArr.length - 1]);
-        
-        return sb.toString();
+        return sb.append(min).append(" ").append(max).toString();
     }
 }
