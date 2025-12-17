@@ -1,21 +1,17 @@
+import java.util.*;
+
 class Solution {
     public String solution(String my_string) {
         StringBuilder sb = new StringBuilder();
-        boolean flag;
         String[] strArr = my_string.split("");
+        LinkedHashSet<String> set = new LinkedHashSet<>();
         
-        for(int i = 0; i < strArr.length; i++) {
-            flag = true;
-            for(int j = 0; j < i; j++) {
-                if(strArr[i].equals(strArr[j])) {
-                    flag = false;
-                    break;
-                }
-            }
-            
-            if(flag) {
-                sb.append(strArr[i]);
-            }
+        for(String s : strArr) {
+            set.add(s);
+        }
+        
+        for(String s : set) {
+            sb.append(s);
         }
         
         return sb.toString();
