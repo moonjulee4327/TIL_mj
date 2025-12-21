@@ -3,10 +3,12 @@ class Solution {
         int answer = 0;
         
         for(int x = i; x <= j; x++) {
-            for(char c : String.valueOf(x).toCharArray()) {
-                if(Integer.parseInt(String.valueOf(c)) == k) {
+            int temp = x;
+            while(temp != 0) {
+                if(temp % 10 == k) {
                     answer++;
                 }
+                temp /= 10;
             }
         }
         
