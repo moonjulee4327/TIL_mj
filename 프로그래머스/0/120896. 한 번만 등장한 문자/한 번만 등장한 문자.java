@@ -1,18 +1,22 @@
-import java.util.*;
+import java.util.*; 
 
-class Solution {
+class Solution { 
     public String solution(String s) {
-        int[] cnt = new int[26];
-
-        for (int i = 0; i < s.length(); i++) {
-            cnt[s.charAt(i) - 'a']++;
+        int[] arr = new int[26];
+        char[] cArr = s.toCharArray();
+        
+        Arrays.sort(cArr);
+    
+        for(int i = 0; i < cArr.length; i++) {
+            arr[cArr[i] - 'a']++;
         }
-
+        
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 26; i++) {
-            if (cnt[i] == 1) sb.append((char)('a' + i));
+        
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == 1) sb.append((char) (i + 'a'));
         }
-
+        
         return sb.toString();
-    }
+    } 
 }
