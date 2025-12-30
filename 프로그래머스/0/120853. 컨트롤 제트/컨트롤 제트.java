@@ -3,18 +3,18 @@ import java.util.*;
 class Solution {
     public int solution(String s) {
         int answer = 0;
-        String[] sArr = s.split(" ");
-        Stack<String> stack = new Stack<>();
+        // 공식문서에서 stack을 사용할 때 Deque의 구현체를 사용하길 추천함!
+        Deque<String> deque = new ArrayDeque<>();
         
-        for(String str : sArr) {
+        for(String str : s.split(" ")) {
             if(str.equals("Z")) {
-                stack.pop();
+                deque.pop();
             }else {
-                stack.push(str);
+                deque.push(str);
             }
         }
         
-        for(String str : stack) {
+        for(String str : deque) {
             answer += Integer.parseInt(str);
         }
         
